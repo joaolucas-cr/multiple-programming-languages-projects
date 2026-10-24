@@ -131,15 +131,14 @@ def main():
                     print("\nType the month number to filter per month or \"quit\" in order to get back to the main screen. (January: 1, February: 2, etc...)")
                     inp = input()
 
-                    for expense in expenses:
-                        if inp == "quit":
-                            runningSummary = False
-                            continue
-                        
-                        totalExpense = sum(expense.amount for expense in expenses if expense.date.month == int(inp))
-                        print(f"\nTotal expense: {totalExpense:.2f}")
-                        for category in Expense.categories:
-                            print(f"{category}: {sum(expense.amount for expense in expenses if expense.category == category and expense.date.month == int(inp)  ):.2f}")
+                    if inp == "quit":
+                        runningSummary = False
+                        continue
+                    
+                    totalExpense = sum(expense.amount for expense in expenses if expense.date.month == int(inp))
+                    print(f"\nTotal expense: {totalExpense:.2f}")
+                    for category in Expense.categories:
+                        print(f"{category}: {sum(expense.amount for expense in expenses if expense.category == category and expense.date.month == int(inp)  ):.2f}")
 
             case 6: 
                 print("Budget?")
