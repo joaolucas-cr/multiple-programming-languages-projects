@@ -1,0 +1,19 @@
+{
+ "budget": 70.0,
+ "expenses": [
+  {
+   "id": "6e91e473-26b7-4369-8286-509c6b9610b6",
+   "amount": 20,
+   "category": "Food",
+   "description": "fod",
+   "date": "2026-10-24"
+  },
+  {
+   "id": "4e9d8b56-ce3f-46b4-a7f1-0b6dc74cc35b",
+   "amount": 40,
+   "category": "Transportation",
+   "description": "my vehicle",
+   "date": "2026-10-21"
+  }
+ ]
+}
