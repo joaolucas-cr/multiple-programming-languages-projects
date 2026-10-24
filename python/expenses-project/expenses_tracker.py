@@ -18,7 +18,7 @@ def main():
     exps = storage.getExpense()
     expenses = []
     for exp in exps:
-        expenses.append(Expense(exp['amount'], exp['category'], exp['description'], exp['date']))
+        expenses.append(Expense(exp['amount'], exp['category'], exp['description'], exp['date'], id=exp['id']))
     budget = storage.getBudget()
     running = True
     while(running):
@@ -38,7 +38,11 @@ def main():
         if(action == "exit"):
             exit()
 
-        action = int(action)
+        try:
+            action = int(action)
+        except:
+            print("Invalid key!\n")
+            continue
         print()
 
         match action:
@@ -56,7 +60,7 @@ def main():
                 date = input()
 
                 try:
-                    expense = Expense(int(amount), category, description, date)
+                    expense = Expense(float(amount), category, description, date)
                     expenses.append(expense)
                     storage.saveExpenses(expenses)
                     print("\nSucessfully created the expense!")
@@ -92,6 +96,8 @@ def main():
                         date = input()
 
                         expense.update(amount, description, category, date)
+                        storage.saveExpenses(expenses)
+
                 if(not found):
                     print("\nNo record found")
 
@@ -106,6 +112,8 @@ def main():
                         if(answer == "yes"):
                             expenses.pop(i)
                             found = True
+                            storage.saveExpenses(expenses)
+
                             print("\n Successfully deleted expense.")
                         else:
                             print("Operation cancelled")

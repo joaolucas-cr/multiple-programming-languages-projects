@@ -27,8 +27,11 @@ class Expense():
         self.amount = amount
         self.category = category
 
-    def __init__(self, amnt, ctgry, dscp, dt):
-        self.id = str(generateUUID())
+    def __init__(self, amnt, ctgry, dscp, dt, id=None):
+        if id:
+            self.id = id
+        else: 
+            self.id = str(generateUUID())
         self._populate(amnt, dscp, ctgry, dt)
 
     def getID(self):
