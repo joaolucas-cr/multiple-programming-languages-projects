@@ -70,9 +70,8 @@ public class UserBank {
                 User user = users.get(i);
                 writer.write(user.id+","+user.name);
                 for(int j = 0; j < 3; j++) {
-                    if(user.booksReserved.isEmpty()) break;
                     if(user.booksReserved.size() > j) {
-                        writer.write(","+user.booksReserved.get(i).id);
+                        writer.write(","+user.booksReserved.get(j).id);
                     } else {
                         writer.write(",null");
                     }
